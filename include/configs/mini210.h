@@ -89,7 +89,8 @@
 #define CONFIG_CMDLINE_EDITING
 
 /* MACH_TYPE_MINI210 macro will be removed once added to mach-types */
-#define MACH_TYPE_MINI210		2456
+#define MACH_TYPE_MINI210		3466 	/* from friendlyarm kernel */
+/*#define MACH_TYPE_MINI210		2456	 smdkv210 */
 #define CONFIG_MACH_TYPE		MACH_TYPE_MINI210
 
 /* Size of malloc() pool */
@@ -120,6 +121,7 @@
 #define CONFIG_CMD_DHCP
 #define CONFIG_CMD_MMC
 #define CONFIG_CMD_FAT
+/*#define CONFIG_CMD_EXT2 */		/* EXT2 Support                 */
 
 #define CONFIG_BOOTDELAY		3
 #define CONFIG_ZERO_BOOTDELAY_CHECK
@@ -128,7 +130,7 @@
 #define CONFIG_SYS_LONGHELP             /* undef to save memory */
 #define CONFIG_SYS_HUSH_PARSER          /* use "hush" command parser    */
 #define CONFIG_SYS_PROMPT_HUSH_PS2      "> "
-#define CONFIG_SYS_PROMPT              "FriendlyARM-MINI210 # "
+#define CONFIG_SYS_PROMPT              "MINI210 # "
 #define CONFIG_SYS_CBSIZE               256     /* Console I/O Buffer Size*/
 #define CONFIG_SYS_PBSIZE               384     /* Print Buffer Size */
 #define CONFIG_SYS_MAXARGS              16      /* max number of command args */

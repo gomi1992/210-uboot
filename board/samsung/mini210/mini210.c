@@ -35,6 +35,7 @@
 #include <asm/arch/clk.h>
 #include <asm/arch/clock.h>
 #include <netdev.h>
+#include <usb/s3c_udc.h>
 
 /* ------------------------------------------------------------------------- */
 #define SMC9115_Tacs	(0x0)	// 0clk		address set-up
@@ -305,4 +306,25 @@ int board_mmc_init(bd_t *bis)
 
 	return (s5p_mmc_init(0, 4) || s5p_mmc_init(1, 4));
 }
+
+#ifdef CONFIG_USB_GADGET
+static int s5pc1xx_phy_control(int on)
+{
+	debug("s5pc1xx_phy_control: on = %d\n", on);
+        return 0;
+}
+
+struct s3c_plat_otg_data s5pc110_otg_data = {
+        .phy_control = s5pc1xx_phy_control,
+        .regs_phy = S5PC110_PHY_BASE,
+        .regs_otg = S5PC110_OTG_BASE,
+        .usb_phy_ctrl = S5PC110_USB_PHY_CONTROL,
+};
+
+void board_usb_init(void)
+{
+       debug("USB_udc_probe\n");
+       s3c_udc_probe(&s5pc110_otg_data);
+}
+#endif
 #endif

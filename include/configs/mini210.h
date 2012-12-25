@@ -123,6 +123,26 @@
 #define CONFIG_CMD_FAT
 /*#define CONFIG_CMD_EXT2 */		/* EXT2 Support                 */
 
+#define CONFIG_CMD_DFU
+
+/* FAT */
+#define CONFIG_FAT_WRITE
+
+/* USB Composite download gadget - g_dnl */
+#define CONFIG_USBDOWNLOAD_GADGET
+#define CONFIG_DFU_FUNCTION
+#define CONFIG_DFU_MMC
+
+/* USB Samsung's IDs */
+#define CONFIG_G_DNL_VENDOR_NUM 0x04E8
+#define CONFIG_G_DNL_PRODUCT_NUM 0x6601
+#define CONFIG_G_DNL_MANUFACTURER "Samsung"
+
+#define CONFIG_DFU_ALT \
+       "dfu_alt_info=" \
+       "u-boot mmc 80 400;" \
+       "uImage fat 0 2\0" \
+
 #define CONFIG_BOOTDELAY		3
 #define CONFIG_ZERO_BOOTDELAY_CHECK
 
@@ -429,5 +449,9 @@
 #define CONFIG_USB_GADGET
 #define CONFIG_USB_GADGET_S3C_UDC_OTG
 #define CONFIG_USB_GADGET_DUALSPEED
+#define CONFIG_USB_GADGET_VBUS_DRAW    2
+
+#define CONFIG_EXTRA_ENV_SETTINGS \
+	CONFIG_DFU_ALT
 
 #endif	/* __CONFIG_H */

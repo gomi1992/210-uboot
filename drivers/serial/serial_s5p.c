@@ -30,10 +30,6 @@
 
 DECLARE_GLOBAL_DATA_PTR;
 
-#define RX_FIFO_COUNT_MASK	0xff
-#define RX_FIFO_FULL_MASK	(1 << 8)
-#define TX_FIFO_FULL_MASK	(1 << 24)
-
 static inline struct s5p_uart *s5p_get_base_uart(int dev_index)
 {
 	u32 offset = dev_index * sizeof(struct s5p_uart);
@@ -91,8 +87,8 @@ int serial_init_dev(const int dev_index)
 {
 	struct s5p_uart *const uart = s5p_get_base_uart(dev_index);
 
-	/* enable FIFOs */
-	writel(0x1, &uart->ufcon);
+	/* reset and enable FIFOs, set triggers to the maximum */
+	writel(0, &uart->ufcon);
 	writel(0, &uart->umcon);
 	/* 8N1 */
 	writel(0x3, &uart->ulcon);
@@ -134,8 +130,7 @@ int serial_getc_dev(const int dev_index)
 	struct s5p_uart *const uart = s5p_get_base_uart(dev_index);
 
 	/* wait for character to arrive */
-	while (!(readl(&uart->ufstat) & (RX_FIFO_COUNT_MASK |
-					 RX_FIFO_FULL_MASK))) {
+	while (!(readl(&uart->utrstat) & 0x1)) {
 		if (serial_err_check(dev_index, 0))
 			return 0;
 	}
@@ -151,7 +146,7 @@ void serial_putc_dev(const char c, const int dev_index)
 	struct s5p_uart *const uart = s5p_get_base_uart(dev_index);
 
 	/* wait for room in the tx FIFO */
-	while ((readl(&uart->ufstat) & TX_FIFO_FULL_MASK)) {
+	while (!(readl(&uart->utrstat) & 0x2)) {
 		if (serial_err_check(dev_index, 1))
 			return;
 	}

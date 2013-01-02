@@ -81,6 +81,7 @@
 #define CONFIG_SYS_MMC_ENV_PART 2
 
 /* USB Host support */
+#define CONFIG_USB_MAX_CONTROLLER_COUNT 3
 #define CONFIG_USB_EHCI
 #define CONFIG_USB_EHCI_TEGRA
 #define CONFIG_USB_STORAGE
@@ -98,10 +99,8 @@
 #define CONFIG_TEGRA_KEYBOARD
 #define CONFIG_KEYBOARD
 
-#undef TEGRA_DEVICE_SETTINGS
-#define TEGRA_DEVICE_SETTINGS	"stdin=serial,tegra-kbc\0" \
-				"stdout=serial\0" \
-				"stderr=serial\0"
+/* USB keyboard */
+#define CONFIG_USB_KEYBOARD
 
 #include "tegra-common-post.h"
 

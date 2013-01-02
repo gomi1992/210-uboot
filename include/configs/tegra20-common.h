@@ -100,7 +100,6 @@
  */
 #define CONFIG_USB_EHCI_TXFIFO_THRESH	10
 #define CONFIG_EHCI_IS_TDI
-#define CONFIG_EHCI_DCACHE
 
 /* Total I2C ports on Tegra20 */
 #define TEGRA_I2C_NUM_CONTROLLERS	4
@@ -125,12 +124,8 @@
 
 #define CONFIG_SYS_NO_FLASH
 
-/* Environment information, boards can override if required */
 #define CONFIG_CONSOLE_MUX
 #define CONFIG_SYS_CONSOLE_IS_IN_ENV
-#define TEGRA_DEVICE_SETTINGS	"stdin=serial\0" \
-				"stdout=serial\0" \
-				"stderr=serial\0"
 
 #define CONFIG_LOADADDR		0x408000	/* def. location for kernel */
 #define CONFIG_BOOTDELAY	2		/* -1 to disable auto boot */
@@ -169,7 +164,10 @@
 #define PHYS_SDRAM_1_SIZE	0x20000000	/* 512M */
 
 #define CONFIG_SYS_TEXT_BASE	0x0010c000
+#define CONFIG_SYS_UBOOT_START	CONFIG_SYS_TEXT_BASE
 #define CONFIG_SYS_SDRAM_BASE	PHYS_SDRAM_1
+
+#define CONFIG_SYS_BOOTMAPSZ	(256 << 20) /* 256M */
 
 #define CONFIG_SYS_INIT_RAM_ADDR	CONFIG_STACKBASE
 #define CONFIG_SYS_INIT_RAM_SIZE	CONFIG_SYS_MALLOC_LEN
@@ -184,9 +182,13 @@
 
 /* Defines for SPL */
 #define CONFIG_SPL
+#define CONFIG_SPL_FRAMEWORK
+#define CONFIG_SPL_RAM_DEVICE
+#define CONFIG_SPL_BOARD_INIT
 #define CONFIG_SPL_NAND_SIMPLE
 #define CONFIG_SPL_TEXT_BASE		0x00108000
-#define CONFIG_SPL_MAX_SIZE		0x00004000
+#define CONFIG_SPL_MAX_SIZE		(CONFIG_SYS_TEXT_BASE - \
+						CONFIG_SPL_TEXT_BASE)
 #define CONFIG_SYS_SPL_MALLOC_START	0x00090000
 #define CONFIG_SYS_SPL_MALLOC_SIZE	0x00010000
 #define CONFIG_SPL_STACK		0x000ffffc
@@ -198,5 +200,9 @@
 #define CONFIG_SPL_LDSCRIPT		"$(CPUDIR)/tegra20/u-boot-spl.lds"
 
 #define CONFIG_SYS_NAND_SELF_INIT
+#define CONFIG_SYS_NAND_ONFI_DETECTION
+
+/* Misc utility code */
+#define CONFIG_BOUNCE_BUFFER
 
 #endif /* __TEGRA20_COMMON_H */

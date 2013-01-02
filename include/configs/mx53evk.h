@@ -55,9 +55,9 @@
 #define CONFIG_SYS_I2C_SPEED            100000
 
 /* PMIC Configs */
-#define CONFIG_PMIC
-#define CONFIG_PMIC_I2C
-#define CONFIG_PMIC_FSL
+#define CONFIG_POWER
+#define CONFIG_POWER_I2C
+#define CONFIG_POWER_FSL
 #define CONFIG_SYS_FSL_PMIC_I2C_ADDR    8
 #define CONFIG_RTC_MC13XXX
 
@@ -73,7 +73,6 @@
 #define CONFIG_DOS_PARTITION
 
 /* Eth Configs */
-#define CONFIG_HAS_ETH1
 #define CONFIG_MII
 
 #define CONFIG_FEC_MXC

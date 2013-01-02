@@ -7,6 +7,10 @@
 # and Cc: the <u-boot@lists.denx.de> mailing list.			#
 #									#
 # Note: lists sorted by Maintainer Name					#
+# Note: These are the maintainers for specific *boards*.  The		#
+#	custodians for general architectures and subsystems can		#
+#	be found here -- http://www.denx.de/wiki/U-Boot/Custodians	#
+#									#
 #########################################################################
 
 
@@ -388,6 +392,8 @@ Ricardo Ribalda <ricardo.ribalda@uam.es>
 
 Stefan Roese <sr@denx.de>
 
+	a3m071		MPC5200
+
 	P3M7448		MPC7448
 
 	uc100		MPC857
@@ -564,6 +570,10 @@ Unknown / orphaned boards:
 Albert ARIBAUD <albert.u.boot@aribaud.net>
 
 	edminiv2	ARM926EJS (Orion5x SoC)
+
+Raphael Assenat <raph@8d.com>
+
+	eco5pk		ARM ARMV7 (AM35x SoC)
 
 Stefano Babic <sbabic@denx.de>
 
@@ -799,7 +809,7 @@ Veli-Pekka Peltola <veli-pekka.peltola@bluegiga.com>
 
 	apx4devkit	i.MX28
 
-Luka Perkov <uboot@lukaperkov.net>
+Luka Perkov <luka@openwrt.org>
 
 	ib62x0		ARM926EJS
 	iconnect	ARM926EJS
@@ -899,6 +909,10 @@ Bo Shen <voice.shen@atmel.com>
 Michal Simek <monstr@monstr.eu>
 
 	zynq		ARM ARMV7 (Zynq SoC)
+
+Lucas Stach <dev@lynxeye.de>
+
+	colibri_t20_iris	Tegra20 (ARM7 & A9 Dual Core)
 
 Nick Thompson <nick.thompson@gefanuc.com>
 
@@ -1010,6 +1024,10 @@ Tetsuyuki Kobayashi <koba@kmckk.co.jp>
 Nobuhiro Iwamatsu <nobuhiro.iwamatsu.yj@renesas.com>
 
 	armadillo-800eva	R8A7740 (RMOBILE SoC)
+
+Pali Rohár <pali.rohar@gmail.com>
+
+	nokia_rx51	ARM ARMV7 (OMAP34xx SoC)
 
 -------------------------------------------------------------------------
 

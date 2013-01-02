@@ -50,6 +50,7 @@
 #define CONFIG_MMC
 #define CONFIG_CMD_MMC
 #define CONFIG_GENERIC_MMC
+#define CONFIG_BOUNCE_BUFFER
 #define CONFIG_CMD_FAT
 #define CONFIG_DOS_PARTITION
 
@@ -165,7 +166,5 @@
 
 #define CONFIG_OF_LIBFDT
 #define CONFIG_CMD_BOOTZ
-
-#define CONFIG_SYS_DCACHE_OFF
 
 #endif				/* __CONFIG_H */

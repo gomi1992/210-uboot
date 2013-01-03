@@ -140,8 +140,8 @@
 
 #define CONFIG_DFU_ALT \
        "dfu_alt_info=" \
-       "u-boot mmc 80 400;" \
-       "uImage fat 0 2\0" \
+       "u-boot mmc 31 400;" \
+       "uImage fat 0 1\0" \
 
 #define CONFIG_BOOTDELAY		3
 #define CONFIG_ZERO_BOOTDELAY_CHECK

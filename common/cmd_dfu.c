@@ -55,7 +55,7 @@ static int do_dfu(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
 		goto done;
 	}
 
-#ifdef CONFIG_TRATS
+#if defined(CONFIG_TRATS) || defined(CONFIG_S5PC110)
 	board_usb_init();
 #endif
 
